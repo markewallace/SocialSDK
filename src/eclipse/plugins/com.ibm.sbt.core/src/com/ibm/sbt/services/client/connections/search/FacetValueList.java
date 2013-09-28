@@ -32,7 +32,7 @@ import com.ibm.sbt.services.client.base.ConnectionsConstants;
 import com.ibm.sbt.services.client.base.ConnectionsFeedXpath;
 import com.ibm.sbt.services.client.base.datahandlers.EntityList;
 import com.ibm.sbt.services.client.base.datahandlers.XmlDataHandler;
-import com.ibm.sbt.services.client.connections.search.feedhandler.FacetsHandler;
+import com.ibm.sbt.services.client.connections.search.feedhandler.FacetFeedHandler;
 
 
 /**
@@ -46,7 +46,7 @@ public class FacetValueList extends EntityList<FacetValue> {
 		super(requestData, service);
 	}
 	
-	public FacetValueList(Response requestData, FacetsHandler feedHandler) {
+	public FacetValueList(Response requestData, FacetFeedHandler feedHandler) {
 		super(requestData, feedHandler);
 	}
 	
@@ -97,7 +97,7 @@ public class FacetValueList extends EntityList<FacetValue> {
 	}
 	
 	private String createXPath() {
-		FacetsHandler facetsHandler = (FacetsHandler)getFeedHandler();
+		FacetFeedHandler facetsHandler = (FacetFeedHandler)getFeedHandler();
 		return StringUtil.replace("/a:feed/ibmsc:facets/ibmsc:facet[@id='{facet.id}']/ibmsc:facetValue", "{facet.id}", facetsHandler.getFacetId());
 	}
 	

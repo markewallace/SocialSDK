@@ -16,7 +16,6 @@
 
 package com.ibm.sbt.services.client.connections.search;
 
-import com.ibm.commons.util.StringUtil;
 import com.ibm.commons.xml.DOMUtil;
 import com.ibm.commons.xml.XMLException;
 import com.ibm.commons.xml.xpath.XPathExpression;

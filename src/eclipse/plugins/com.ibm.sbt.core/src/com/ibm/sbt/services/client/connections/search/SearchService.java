@@ -48,7 +48,7 @@ import com.ibm.sbt.services.client.ClientServicesException;
 import com.ibm.sbt.services.client.base.BaseService;
 import com.ibm.sbt.services.client.base.ConnectionsConstants;
 import com.ibm.sbt.services.client.base.util.EntityUtil;
-import com.ibm.sbt.services.client.connections.search.feedhandler.FacetsHandler;
+import com.ibm.sbt.services.client.connections.search.feedhandler.FacetFeedHandler;
 import com.ibm.sbt.services.client.connections.search.feedhandler.ScopeFeedHandler;
 import com.ibm.sbt.services.client.connections.search.feedhandler.SearchFeedHandler;
 import com.ibm.sbt.services.util.AuthUtil;
@@ -243,7 +243,7 @@ public class SearchService extends BaseService {
 
 		try {
 			String searchQry = resolveUrl(SearchType.PUBLIC);
-			searchResults = (FacetValueList) getEntities(searchQry, parameters, new FacetsHandler(this, "Person"));
+			searchResults = (FacetValueList) getEntities(searchQry, parameters, new FacetFeedHandler(this, "Person"));
 		} catch (ClientServicesException e) {
 			throw new SearchServiceException(e);
 		} catch (IOException e) {
@@ -292,7 +292,7 @@ public class SearchService extends BaseService {
 		
 		try {
 			String searchQry = resolveUrl(SearchType.MY);
-			searchResults = (ResultList) getEntities(searchQry, parameters, new FacetsHandler(this, "Person"));
+			searchResults = (ResultList) getEntities(searchQry, parameters, new FacetFeedHandler(this, "Person"));
 		} catch (ClientServicesException e) {
 			throw new SearchServiceException(e);
 		} catch (IOException e) {

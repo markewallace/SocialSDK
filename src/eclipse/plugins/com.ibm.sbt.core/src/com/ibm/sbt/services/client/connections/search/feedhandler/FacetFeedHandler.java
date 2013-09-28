@@ -43,9 +43,7 @@ import com.ibm.sbt.services.client.connections.search.SearchXPath;
  * 
  * @author Manish Kataria
  */
-
-
-public class FacetsHandler implements IFeedHandler{
+public class FacetFeedHandler implements IFeedHandler{
 	
 	private final SearchService service;
 	private final String facetId;
@@ -55,7 +53,7 @@ public class FacetsHandler implements IFeedHandler{
 	 * 
 	 * @param service
 	 */
-	public FacetsHandler(SearchService service, String facetId){
+	public FacetFeedHandler(SearchService service, String facetId){
 		this.service = service;
 		this.facetId = facetId;
 	}
