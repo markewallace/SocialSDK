@@ -71,6 +71,8 @@ public abstract class AbstractEndpoint implements Endpoint, Cloneable {
     private String proxyConfig;
     private boolean allowClientAccess = true;
     private boolean useProxy = true;
+    private String transportModule;
+    private String proxyModule;
     
     protected Map<String, Object> clientParams = new HashMap<String, Object>();
     
@@ -158,9 +160,31 @@ public abstract class AbstractEndpoint implements Endpoint, Cloneable {
 	public String getUrl() {
         return url;
     }
+    
+    /**
+     * Set the URL associated with this endpoint
+     * @param url
+     */
     public void setUrl(String url) {
         this.url = url;
     }
+    
+    /**
+     * Set the transport module associated with this endpoint
+	 * @param transportModule the transportModule to set
+	 */
+	public void setTransportModule(String transportModule) {
+		this.transportModule = transportModule;
+	}
+	
+	/**
+	 * Set the proxy module associated with this endpoint
+	 * @param proxyModule the proxyModule to set
+	 */
+	public void setProxyModule(String proxyModule) {
+		this.proxyModule = proxyModule;
+	}
+    
     /**
      * returns the Endpoint bean name
      * 
@@ -293,7 +317,8 @@ public abstract class AbstractEndpoint implements Endpoint, Cloneable {
      */
     @Override
     public JSReference getTransport(String endpointName, String moduleId) {
-    	return new JSReference(moduleId);
+    	String module = (StringUtil.isEmpty(this.transportModule)) ? moduleId : this.transportModule;
+    	return new JSReference(module);
     }
     
     /* (non-Javadoc)
@@ -301,7 +326,8 @@ public abstract class AbstractEndpoint implements Endpoint, Cloneable {
      */
     @Override
     public JSReference getProxy(String endpointName, String moduleId) {
-    	return new JSReference(moduleId);
+    	String module = (StringUtil.isEmpty(this.proxyModule)) ? moduleId : this.proxyModule;
+    	return new JSReference(module);
     }
 
     @Override
